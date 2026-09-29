@@ -1,0 +1,123 @@
+/* main.css / src/index.css */
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,600&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-gradient: linear-gradient(-45deg, #fff0c9, #ffc9f3, #fff0c9, #ffc9f3);
+  --bg-card-top: #33a1fd;
+  --bg-card-bottom: #ffffff;
+  --text-main: #333333;
+  --accent-neon: #289bb8;
+  --shadow: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+  --bg-gradient: linear-gradient(-45deg, #30142b, #2772a1, #0f172a, #020617);
+  --bg-card-top: #007bff;
+  --bg-card-bottom: #242526;
+  --text-main: #e4e6eb;
+  --accent-neon: #289bb8;
+  --shadow: rgba(0, 0, 0, 0.6);
+}
+
+body {
+  background: var(--bg-gradient);
+  background-size: 400% 400%;
+  animation: gradientFlow 10s ease infinite;
+  font-family: 'Poppins', sans-serif;
+  transition: background 0.8s ease, color 0.4s ease;
+  margin: 0;
+  color: var(--text-main);
+  min-height: 100vh;
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Tarjeta base con soporte a tu estructura dual */
+.card {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px var(--shadow);
+  overflow: hidden;
+  text-align: center;
+  background-color: var(--bg-card-bottom);
+  border: 1px solid rgba(40, 155, 184, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 12px 35px var(--accent-neon);
+}
+
+.card-header-top {
+  background-color: var(--bg-card-top);
+  color: #ffffff;
+  padding: 12px 18px;
+}
+
+.card-body-bottom {
+  background-color: var(--bg-card-bottom);
+  color: var(--text-main);
+  padding: 16px;
+}
+
+/* Botón interactivo de estilo neón */
+.btn-neon {
+  padding: 10px 18px;
+  color: var(--accent-neon);
+  background: transparent;
+  border: 1.5px solid var(--accent-neon);
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-neon:hover:not(:disabled) {
+  background: var(--accent-neon);
+  color: #ffffff;
+  box-shadow: 0 0 18px var(--accent-neon);
+  transform: translateY(-2px);
+}
+
+.btn-neon:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Botón obligatorio del selector de tema */
+.theme-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: 20px;
+  cursor: pointer;
+  border: 2px solid var(--accent-neon);
+  background: var(--bg-card-bottom);
+  color: var(--text-main);
+  box-shadow: 0 4px 15px var(--shadow);
+  transition: all 0.3s ease;
+}
+
+.theme-toggle-btn:hover {
+  background: var(--accent-neon);
+  color: #ffffff;
+  box-shadow: 0 0 15px var(--accent-neon);
+  transform: scale(1.04);
+}
